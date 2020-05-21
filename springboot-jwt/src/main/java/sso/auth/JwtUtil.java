@@ -20,7 +20,7 @@ import java.util.UUID;
 
 public class JwtUtil {
 
-    private static String jwtCookieName = "iplat-jwt";
+    private static final String jwtCookieName = "iplat-jwt";
 
     public static String generateToken(String subject) {
 

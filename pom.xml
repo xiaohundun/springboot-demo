@@ -10,7 +10,7 @@
         <module>springboot-mvc</module>
         <module>springboot-redis</module>
         <module>commons</module>
-        <module>springboot-security</module>
+        <module>springboot-jwt</module>
         <module>springboot-mongodb</module>
     </modules>
     <packaging>pom</packaging>
