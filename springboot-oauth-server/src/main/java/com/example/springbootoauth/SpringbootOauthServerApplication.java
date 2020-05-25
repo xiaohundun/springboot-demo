@@ -31,7 +31,7 @@ public class SpringbootOauthServerApplication extends WebSecurityConfigurerAdapt
 
     @GetMapping("/user")
     public HttpEntity<Map<String, String>> user (@AuthenticationPrincipal Principal principal) {
-        return new ResponseEntity<>(Collections.singletonMap("id", principal.getName()), HttpStatus.OK);
+        return new ResponseEntity<>(Collections.singletonMap("name", principal.getName()), HttpStatus.OK);
     }
 
     @Override
