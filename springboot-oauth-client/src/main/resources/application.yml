@@ -1,0 +1,27 @@
+server:
+  port: 8081
+
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          moxianbao:
+            #            注意不要在同一host，否则session将被覆盖，无法正常认证
+            authorizationUri: "http://10.25.92.50:8082/oauth/authorize"
+            tokenUri: "http://10.25.92.50:8082/oauth/token"
+            userInfoUri: "http://10.25.92.50:8082/user"
+            clientName: "moxianbao"
+            userNameAttribute: "id"
+        registration:
+          github:
+            clientId: "fd4943c68c0c1147cf88"
+            clientSecret: "cb1854b21579bf6d5622cbed4ddfbedea4f35018"
+          google:
+            client-id: "google-client-id"
+            client-secret: "google-client-secret"
+          moxianbao:
+            clientId: "demo"
+            clientSecret: "abc"
+            authorizationGrantType: "authorization_code"
+            redirectUri: "{baseUrl}/{action}/oauth2/code/{registrationId}"

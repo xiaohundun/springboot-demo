@@ -12,6 +12,8 @@
         <module>commons</module>
         <module>springboot-jwt</module>
         <module>springboot-mongodb</module>
+        <module>springboot-oauth-client</module>
+        <module>springboot-oauth-server</module>
     </modules>
     <packaging>pom</packaging>
 
