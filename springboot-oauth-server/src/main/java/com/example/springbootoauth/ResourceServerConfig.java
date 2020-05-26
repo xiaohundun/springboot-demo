@@ -25,6 +25,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Override
     public void configure (HttpSecurity http) throws Exception {
         // security DSL
-        http.requestMatchers().antMatchers("/user/**").and().authorizeRequests().antMatchers("/user").access("#oauth2.hasScope('read')");
+        http.requestMatchers().antMatchers("/user/**").and().authorizeRequests().antMatchers("/user").access("#oauth2.hasScope('read') or #hasRole('ROLE_USER')");
     }
 }

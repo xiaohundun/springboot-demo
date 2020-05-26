@@ -51,7 +51,11 @@ public class SpringbootOauthClientApplication extends WebSecurityConfigurerAdapt
     @Override
     protected void configure (HttpSecurity http) throws Exception {
         // @formatter:off
-        http.authorizeRequests(a -> a.antMatchers("/", "/favicon.ico", "/error", "/webjars/**").permitAll().anyRequest().authenticated()).exceptionHandling(e -> e.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))).oauth2Login();
+        http.authorizeRequests(a -> a.antMatchers("/", "/favicon.ico", "/error", "/webjars/**").permitAll().anyRequest().authenticated()).exceptionHandling(e -> e.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))).oauth2Login(o -> o.failureHandler((request, response, exception) -> {
+            request.getSession().setAttribute("error.message", exception.getMessage());
+            response.sendRedirect("/");
+        }));
+
         http.logout(l -> l.logoutSuccessUrl("/").permitAll()).csrf(c -> c.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()));
         // @formatter:on
     }
